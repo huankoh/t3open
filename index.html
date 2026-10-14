@@ -1,0 +1,16 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Open in T3 Code</title>
+<style>body{font-family:system-ui,sans-serif;max-width:520px;margin:15vh auto;padding:0 20px;color:#222}a.b{display:inline-block;background:#111;color:#fff;padding:12px 20px;border-radius:8px;text-decoration:none}code{background:#f2f2f2;padding:2px 6px;border-radius:4px;word-break:break-all}.e{color:#b00}</style></head>
+<body><h2>Opening T3 Code…</h2><p id="m">If nothing happens, click the button.</p><p><a class="b" id="go" href="#">Open in T3 Code</a></p><p>Thread: <code id="t">—</code></p>
+<script>
+(function(){
+var SCHEMES=["t3code:","t3code-dev:"];
+var q=new URLSearchParams(location.search),link=null,tid="";
+function ok(s){return /^[A-Za-z0-9:._~%\-]{1,200}$/.test(s)}
+if(q.get("u")){var r=q.get("u"),mm=/^(t3code(?:-dev)?):\/\/threads\/([^/?#]+)\/([^/?#]+)\/?$/.exec(r);if(mm&&ok(mm[2])&&ok(mm[3])){link=r;tid=mm[3]}}
+else if(q.get("thread")&&ok(q.get("thread"))){var env=q.get("env"),sc=q.get("scheme")==="t3code-dev"?"t3code-dev":"t3code";if(env&&ok(env)){tid=q.get("thread");link=sc+"://threads/"+env+"/"+tid}}
+var m=document.getElementById("m"),g=document.getElementById("go");
+if(!link){m.className="e";m.textContent="Invalid or missing T3 thread link.";g.style.display="none";return}
+document.getElementById("t").textContent=tid;g.href=link;location.href=link;
+})();
+</script></body></html>
+
